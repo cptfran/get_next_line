@@ -6,12 +6,18 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:57:09 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/01/17 13:29:58 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 12:48:20 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/**
+ * Reads from the file descriptor into the buffer.
+ * @param chest The buffer where the file content is stored.
+ * @param fd The file descriptor.
+ * @return The updated buffer after reading from the file.
+ */
 char	*read_file(char *chest, int fd)
 {
 	int		read_size;
@@ -35,6 +41,12 @@ char	*read_file(char *chest, int fd)
 	return (free(buf), chest);
 }
 
+/**
+ * Extracts a line from the buffer.
+ * @param chest The buffer where the file content is stored.
+ * @param i The index to start extracting from.
+ * @return The extracted line.
+ */
 char	*extract_line(char *chest, int i)
 {
 	char	*line;
@@ -63,6 +75,11 @@ char	*extract_line(char *chest, int i)
 	return (line);
 }
 
+/**
+ * Updates the buffer after a line has been extracted.
+ * @param chest The buffer where the file content is stored.
+ * @return The updated buffer.
+ */
 char	*update_chest(char *chest)
 {
 	char	*new_chest;
@@ -89,6 +106,11 @@ char	*update_chest(char *chest)
 	return (free(chest), new_chest);
 }
 
+/**
+ * Reads a line from a file descriptor.
+ * @param fd The file descriptor.
+ * @return The read line.
+ */
 char	*get_next_line(int fd)
 {
 	static char	*chest;
